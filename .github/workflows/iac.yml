@@ -1,0 +1,24 @@
+name: Deploy Infrastructure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep to Azure
+        run: |
+          az deployment sub create \
+            --location canadacentral \
+            --template-file infrastructure/main.bicep \
+            --parameters codeIdentification=2

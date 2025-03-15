@@ -1,0 +1,29 @@
+name: Restore Database
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restore-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Import Database
+        run: |
+          az sql db import \
+            --resource-group your-resource-group \
+            --server sqlsrv-calicot-dev-2 \
+            --name sqldb-calicot-dev-2 \
+            --admin-user adminUser \
+            --admin-password SecurePassword123! \
+            --storage-key-type SharedAccessKey \
+            --storage-key ${{ secrets.AZURE_STORAGE_KEY }} \
+            --storage-uri https://yourstorageaccount.blob.core.windows.net/db/Auctions_Data.bacpac
