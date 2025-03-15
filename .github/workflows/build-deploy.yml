@@ -27,7 +27,7 @@ jobs:
         working-directory: CalicotEncheres/
 
       - name: Publish Application
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet publish -c Release -o ${{ github.workspace }}/publish
         working-directory: CalicotEncheres/
 
       - name: Azure Login
@@ -39,4 +39,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: app-calicot-dev-2
-          package: ./publish
+          package: ${{ github.workspace }}/publish
