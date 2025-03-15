@@ -171,7 +171,7 @@ resource autoScaleSettings 'Microsoft.Insights/autoscalesettings@2022-10-01' = {
   location: location
   properties: {
     enabled: true
-    targetResourceUri: appService.id
+    targetResourceUri: appServicePlan.id
     profiles: [
       {
         name: 'DefaultProfile'
