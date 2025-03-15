@@ -23,7 +23,7 @@ jobs:
             --server sqlsrv-calicot-dev-2 \
             --name sqldb-calicot-dev-2 \
             --admin-user adminUser \
-            --admin-password SecurePassword123! \
+            --admin-password ${{ secrets.AZURE_DB_PWD }} \
             --storage-key-type SharedAccessKey \
             --storage-key ${{ secrets.AZURE_STORAGE_KEY }} \
             --storage-uri https://team002storage.blob.core.windows.net/dbz/Auctions_Data.bacpac
