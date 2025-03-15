@@ -19,6 +19,6 @@ jobs:
       - name: Deploy Bicep to Azure
         run: |
           az deployment group create \
-            --location canadacentral \
+            --resource-group rg-calicot-web-dev-2 \
             --template-file infrastructure/main.bicep \
             --parameters codeIdentification=2
