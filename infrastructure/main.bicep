@@ -184,7 +184,7 @@ resource autoScaleSettings 'Microsoft.Insights/autoscalesettings@2022-10-01' = {
           {
             metricTrigger: {
               metricName: 'CpuPercentage'
-              metricNamespace: 'Microsoft.Web/sites'
+              metricNamespace: 'Microsoft.Web/Serverfarms'
               metricResourceUri: appService.id
               operator: 'GreaterThan'
               statistic: 'Average'
