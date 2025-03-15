@@ -18,7 +18,7 @@ jobs:
 
       - name: Deploy Bicep to Azure
         run: |
-          az deployment sub create \
+          az deployment group create \
             --location canadacentral \
             --template-file infrastructure/main.bicep \
             --parameters codeIdentification=2

@@ -1,3 +1,5 @@
+targetScope = 'resourceGroup'
+
 param codeIdentification string = '2'
 param location string = 'canadacentral'
 
@@ -126,7 +128,7 @@ resource appService 'Microsoft.Web/sites@2024-04-01' = {
       appSettings: [
         {
           name: 'ImageUrl'
-          value: 'https://stcalicotprod000.blob.core.windows.net/images/'
+          value: 'https://stcalicotprod000.blob.${environment().suffixes.storage}/images/'
         }
       ]
       connectionStrings: [
